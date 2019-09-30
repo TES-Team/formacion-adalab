@@ -1,3 +1,5 @@
+const allure = require('@wdio/allure-reporter')
+
 exports.config = {
     //
     // ====================
@@ -205,8 +207,12 @@ exports.config = {
     /**
      * Runs after a Cucumber scenario
      */
-    // afterScenario: function (uri, feature, scenario, result, sourceLocation) {
-    // },
+    afterScenario: async function (uri, feature, scenario, { status }, sourceLocation) {
+        if (status === 'failed') {
+            const imageFail = await browser.takeScreenshot()
+            await allure.addAttachment('Screenshot during failed test', imageFail, 'application/json')
+        }
+    },
     /**
      * Runs after a Cucumber feature
      */
