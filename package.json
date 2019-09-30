@@ -4,8 +4,9 @@
   "description": "base of testing proyect",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/wdio wdio.conf.js; npm run report",
-    "report": "./node_modules/.bin/allure generate reports/allure-results --report-dir reports/allureReport --clean"
+    "test": "./node_modules/.bin/wdio wdio.conf.js",
+    "report": "./node_modules/.bin/allure generate reports/allure-results --report-dir reports/allureReport --clean",
+    "test:report": "./node_modules/.bin/wdio wdio.conf.js; npm run report"
   },
   "repository": {
     "type": "git",
