@@ -20,7 +20,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './features/**/*.feature'
+        './src/features/**/*.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -94,7 +94,7 @@ exports.config = {
     baseUrl: 'https://www.bbvaitspain.com/',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 100000,
+    waitforTimeout: 10000,
     //
     // Default timeout in milliseconds for request
     // if Selenium Grid doesn't send response
@@ -123,11 +123,11 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['spec'],
+    reporters: ['spec', ['allure', {outputDir: 'reports/allure-results'}]],
  //
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
-        require: ['./step-definitions/**/*.js'],        // <string[]> (file/dir) require files before executing features
+        require: ['./src/step-definitions/**/*-steps.js'],        // <string[]> (file/dir) require files before executing features
         backtrace: false,   // <boolean> show full backtrace for errors
         requireModule: [],  // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
         dryRun: false,      // <boolean> invoke formatters without executing steps
