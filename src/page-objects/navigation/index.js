@@ -2,13 +2,24 @@ const destinations = {
 	"global position": "../global-position"
 }
 
-async function goTo(destiny) {
-	const { dataAccess } = require(destinations[destiny])
+async function goTo(destination) {
+	const { dataAccess: { url, checkList } } = require(destinations[destination])
 
-	await browser.url(dataAccess.url)
-	const checkPromises = dataAccess.checkList.map(async (elementToCheck) => (await $(elementToCheck)).waitForDisplayed(15000))
+	await browser.url(url)
+	await reloadIfCookiesMessage(url)
+
+	const checkPromises = checkList.map(async (elementToCheck) => (await $(elementToCheck)).waitForDisplayed(15000))
 
 	await Promise.all(checkPromises)
+}
+
+async function reloadIfCookiesMessage(url) {
+	const cookiesModal = await $('#js-cookies-close')
+	const haveCookiesModal = await cookiesModal.isDisplayed()
+
+	if(haveCookiesModal){
+		await browser.url(url)
+	}
 }
 
 module.exports = {
