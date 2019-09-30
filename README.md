@@ -1,6 +1,6 @@
 # BBVA IT Training Adalab
 
-Testing project about bbvait oficial page for training of Adalab students.
+Testing project about BBVAIT oficial page for training of Adalab students.
 
 # Scripts
 
@@ -24,7 +24,7 @@ Before of you execute any script of first time remember: `npm i`
 
 	`npm run test -- --cucumberOpts.tagExpression "@globalPosition and @globalPositionHappyPath"`
 
-## Generate allure report
+## Generate Allure report
 
 `npm run report`
 
