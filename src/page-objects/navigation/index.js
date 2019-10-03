@@ -1,5 +1,6 @@
 const destinations = {
-	"global position": "../global-position"
+	"global position": "../global-position",
+	"blog position": "../blog-position"
 }
 
 async function goTo(destination) {
@@ -17,7 +18,7 @@ async function reloadIfCookiesMessage(url) {
 	const cookiesModal = await $('#js-cookies-close')
 	const haveCookiesModal = await cookiesModal.isDisplayed()
 
-	if(haveCookiesModal){
+	if (haveCookiesModal) {
 		await browser.url(url)
 	}
 }
