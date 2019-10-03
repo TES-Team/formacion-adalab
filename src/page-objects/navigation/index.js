@@ -8,7 +8,7 @@ async function goTo(destination) {
 	await browser.url(url)
 	await reloadIfCookiesMessage(url)
 
-	const checkPromises = checkList.map(async (elementToCheck) => (await $(elementToCheck)).waitForDisplayed(15000))
+	const checkPromises = checkList.map(async (elementToCheck) => (await $(elementToCheck)).waitForDisplayed())
 
 	await Promise.all(checkPromises)
 }
